@@ -42,6 +42,13 @@
     <h3 class="gnb-title">API menu</h3>
     <div class="gnb-inner">
       <!-- your code goes from here -->
+      <gnb-item v-for="(item) in gnbList" 
+        :key="item.pathname"
+        :name="item.name"
+        :pathname="item.pathname"
+        :children="item.children"
+        :depth="1"
+      />
     </div>
   </div>
 </template>
@@ -52,32 +59,11 @@ export default {
   name: 'Gnb',
   data() {
     return {
-      sampleItems: [
-        {
-          name: 'Menu 1',
-          children: [
-            {
-              name: 'Menu 1-1',
-              pathname: '/1-1'
-            },
-            {
-              name: 'Menu 1-2',
-              children: [
-                {
-                  name: 'Menu 1-2-1',
-                  pathname: '/1-2-1'
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: 'Menu 2',
-          pathname: '/2'
-        }
-      ],
-      items: []
-    };
+      gnbList: null, 
+    }
+  },
+  async created()  {
+    this.gnbList = await this.API.getGnb();
   }
 };
 </script>

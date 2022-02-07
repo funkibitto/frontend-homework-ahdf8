@@ -3,12 +3,17 @@
     <div class="page-top">
       <h3 class="pathname">{{ pagePathName }}</h3>
       <div class="button-wrap">
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
+        <button v-for="index in 3" 
+          :key="index" 
+          :class="{ 'is--selected': numOfColumns === index }"
+          @click="onChangeNumOfColumns(index)"
+          >
+          {{ index }}
+         </button>
       </div>
     </div>
-    <div class="box-wrap">
+    
+    <div :class="['box-wrap', `is--${numOfColumns}-column`]">
       <div
         v-for="(item, idx) in box.items"
         :key="'box' + idx"
@@ -32,9 +37,21 @@ export default {
       }
     }
   },
+  data() {
+    return {
+    }
+  },
+  methods: {
+    onChangeNumOfColumns(value) {
+      this.$store.commit('ui/setNumOfColumns', value)
+    },
+  },
   computed: {
     pagePathName() {
       return 'page path: ' + this.$route.path;
+    },
+    numOfColumns () {
+      return this.$store.getters['ui/numOfColumns'];
     }
   }
 };

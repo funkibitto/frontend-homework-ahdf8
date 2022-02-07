@@ -48,6 +48,11 @@
             background-color: $gray-3;
             cursor: pointer;
           }
+
+          &.is--selected {
+            background-color: skyblue;
+            color: #fff;
+          }
         }
       }
     }

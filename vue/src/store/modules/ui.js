@@ -9,9 +9,17 @@ const state = {
   }
 };
 
-const getters = {};
+const getters = {
+  numOfColumns (state, getters) {
+    return state.box.numOfColumns;
+  }
+};
 const actions = {};
-const mutations = {};
+const mutations = {
+  setNumOfColumns: (state, value) => {
+    state.box.numOfColumns = value;
+  }
+};
 
 export default {
   namespaced: true,

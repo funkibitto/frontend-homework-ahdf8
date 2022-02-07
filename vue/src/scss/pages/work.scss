@@ -6,7 +6,24 @@
   .box-wrap {
     width: 100%;
     height: auto;
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &.is--1-column {
+      .box {
+        width: 100%;
+      }
+    }
+    &.is--2-column {
+      .box {
+        width: 49.0%;
+      }
+    }
+    &.is--3-column {
+      .box {
+        width: 33.0%;
+      }
+    }
     .box {
       position: relative;
       width: 100%;
